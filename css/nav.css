@@ -1,0 +1,92 @@
+.navbar-toggler .fa-bars {
+    color: #000;
+    font-size: 24px;
+    padding: 8px;
+  }
+  
+  .navbar-collapse form {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-collapse input[type="search"] {
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #fff;
+    border-radius: 0;
+    color: #fff;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  .navbar-collapse button[type="submit"] {
+    border: none;
+    border-radius: 0;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+  
+  /* Position search icon and search box */
+  .search-form {
+    position: relative;
+  }
+  
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100%, -50%);
+    transition: all 0.3s ease;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .search-input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    width: 0;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border: 1px solid #000;
+    outline: none;
+  }
+  
+  .search-btn {
+    display: none;
+  }
+  
+  /* Show/hide search box on click */
+  .search-icon.active {
+    left: calc(100% - 2rem);
+  }
+  
+  .search-icon.active + .search-input {
+    opacity: 1;
+    width: 8rem;
+    left: calc(100% - 10rem);
+  }
+  
+  .search-icon.active + .search-btn {
+    display: inline-block;
+  }
+  
+  /* Show search icon when search box is hidden */
+  .search-form:not(.show-search) .search-icon {
+    display: block;
+  }
+  
+  .search-form:not(.show-search) .search-input {
+    display: none;
+  }
+  
+  .search-form:not(.show-search) .search-btn {
+    display: none;
+  }
+  
