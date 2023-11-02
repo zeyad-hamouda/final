@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.2"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {"text": "Group 18"},
+  "width": 200,
+  "height": 200,
+  "data": {"url": "Transactions-smaller.csv", "format": "csv"},
+  "config": {"axis": {"titleFontSize": 16, "labelFontSize": 12}},
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "instance_date",
+      "type": "temporal",
+      "timeUnit": "year",
+      "title": "instance_date(Year)"
+    },
+    "y": {
+      "aggregate": "count",
+      "field": "rooms_en",
+      "type": "quantitative",
+      "title": "Count of Records",
+      "scale": {"domain": [null, 500]}
+    },
+    "color": {"field": "rooms_en", "type": "nominal"}
+  }
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
