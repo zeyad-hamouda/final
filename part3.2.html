@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.2"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/sheriefAbdallah/CS318/main/Transactions-smaller.csv",
+    "format": {"type": "csv"}
+  },
+  "hconcat": [
+    {
+      "mark": "boxplot",
+      "encoding": {
+        "x": {"field": "property_type_en", "type": "nominal"},
+        "y": {"field": "actual_worth", "type": "quantitative"},
+        "color": {"field": "property_type_en", "type": "nominal"},
+        "tooltip": [
+          {"field": "property_type_en", "type": "nominal"},
+          {
+            "field": "actual_worth",
+            "type": "quantitative",
+            "title": "Actual Worth"
+          }
+        ]
+      }
+    },
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {"field": "property_type_en", "type": "nominal"},
+        "y": {"aggregate": "count", "type": "quantitative"},
+        "color": {"field": "property_type_en", "type": "nominal"},
+        "tooltip": [
+          {"field": "property_type_en", "type": "nominal"},
+          {"aggregate": "count", "type": "quantitative", "title": "Count"}
+        ]
+      }
+    }
+  ],
+  "config": {}
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
